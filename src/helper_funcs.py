@@ -135,9 +135,14 @@ def find_cars(img, ystart, ystop, xstart, xstop, scale, step):
     return boxes
 def frame_proc(img, lane = False, video = False, vis = False):
     global heat_p, boxes_p, n_count
-    if (video and n_count%2==0) or not video: # Skip every second video frame
+    if (video and n_count%2==0) or (not video): # Skip every second video frame
         heat = np.zeros_like(img[:,:,0]).astype(np.float)
         boxes = []
+        # boxes = find_cars(img, 350, 650, 0, 1280, 2.0, 2)
+        # boxes += find_cars(img, 350, 650, 0, 1280, 1.5, 2)
+        # boxes += find_cars(img, 350, 650, 0, 1280, 1.0, 2)
+        # boxes += find_cars(img, 350, 600, 0, 1280, 0.75, 2)
+
         boxes = find_cars(img, 400, 650, 950, 1280, 2.0, 2)
         boxes += find_cars(img, 400, 500, 950, 1280, 1.5, 2)
         boxes += find_cars(img, 400, 650, 0, 330, 2.0, 2)
