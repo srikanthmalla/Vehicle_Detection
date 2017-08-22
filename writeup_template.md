@@ -99,7 +99,7 @@ hist_bins = 32    # Number of histogram bins
 ```
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a SVM using in `src/classifier.py`
+The code for this step is contained in `src/classifier.py`
 
 Normalizing ensures that a classifier's behavior isn't dominated by just a subset of the features, and that the training process is as efficient as possible. That is why, feature list was normolized by the `StandardScaler()` method from `sklearn`. The data is splitted into thaining and testing subsets (80% and 20%). The classifier is a linear SVM. It was found that it performs well enough and quite fast for the task.
 
