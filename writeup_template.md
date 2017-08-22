@@ -176,5 +176,3 @@ The heatmap of found hot windows overlap:
 - It is possible to improve the classifier by additional data augmentation, hard negative mining, classifier parameters tuning etc.
 
 - The algorithm may have some problems in case of car overlaps another. To resolve this problem one may introduce long term memory of car position and a kind of predictive algorithm which can predict where occluded car can be and where it is worth to look for it.
-
-- To eliminate false positives on areas out of the road, one can deeply combine results from the Advanced Lane Line finding project to correctly determine the wide ROI on the whole frame by the road boundaries. Unfortunately, it was not correctly implemented (just hard coded, which is enought for the project but not a good implementation for a real-world application) due to time limitation.
