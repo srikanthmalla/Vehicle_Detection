@@ -9,6 +9,30 @@ The goals / steps of this project are the following:
 * Run your pipeline on a video stream (start with the test_video.mp4 and later implement on full project_video.mp4) and create a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
 * Estimate a bounding box for vehicles detected.
 
+The Repo contains:
+
+`src/classifier.py` - implementation of classifer
+
+`src/feature_extract.py` - implementation of feature extraction
+
+`src/helper_funcs.py` - helper functions
+
+`src/load_data.py` -loading data
+
+`src/params.py` - parameters
+
+`src/slide_window.py` -sliding window operations
+
+`main.py` - pipeline on images and video
+
+`project_video.mp4` -raw video
+
+`output_test_images/` -output images directory
+
+`vehicles/` - training vehicle images directory
+
+`non-vehicles/`- training non vehicle images directory
+
 ### Histogram of Oriented Gradients (HOG)
 
 #### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
