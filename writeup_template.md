@@ -121,11 +121,12 @@ There are some sample results for a fixed window size (128x128 px) and overlap f
 ![Test image 6](output_test_images/test6.jpg)
 
 As we can see on examples above, the classifier successfully finds cars on the test images. However, there is a false positive example, so, we will need to apply a kind of filter (such as heat map) and the classifier failed to find a car on th 3rd image because it is too small for it. That is why, we will need to use multi scale windows.
+
 ---
 
 ### Video Implementation
 
-####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
+#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 
 Here's a [link to my video result](https://www.youtube.com/watch?v=-s-7U2d2WCg)
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=-s-7U2d2WCg
@@ -147,7 +148,13 @@ Implemented Ideas:
 
 ![New car detection ROI](output_test_images/window.jpg)
 
+
+
 - It is important to use different scale of the classifiers window on different parts of the image due to perspective. So, different ROI  window sizes were applied on different areas (realized in the `frame_proc` function in `src/helper_funcs.py`).
+
+- In order to reduce jitter the function `filt` applies a simple low-pass filter on the new and the previous cars boxes coordinates and sizes (see under the *Frames processing* header) with weight `ALPHA=0.75` of the previous data. This makes car boundaries on video quite smooth.
+
+- To increase performance the analizys was skiped for every 2nd frame because we do not expect very fast moving of the detected cars. Known cars boundaries from the previous frame is used in such cases.
 
 Areas of interest for tracking of detected cars are marked green. Hot windows (which were classified as cars) are yellow.
 
