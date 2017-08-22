@@ -22,7 +22,7 @@ for image_p in glob.glob('test_images/test*.jpg'):
     window_img = draw_boxes(draw_image, hot_windows, color=(0, 0, 255), thick=6)                    
     show_img(window_img)
     plt.show()
-    scipy.misc.imsave('output_'+image_p, window_img)    
+    scipy.misc.imsave('output_'+image_p, cv2.cvtColor(window_img, cv2.COLOR_BGR2RGB))    
 
 print(round(time.time()-t, 2), 'Seconds to process test images')
 
@@ -38,28 +38,17 @@ windows = slide_window(image, x_start_stop=[400, 880], y_start_stop=[400, 470],
 window_img = draw_boxes(window_img, windows, color=(255, 0, 0), thick=6)                    
 show_img(window_img)
 plt.show()
-scipy.misc.imsave('output_test_images/window.jpg', window_img)    
+scipy.misc.imsave('output_test_images/window.jpg', cv2.cvtColor(window_img, cv2.COLOR_BGR2RGB))    
 
-    
-#pipeline on images
-# t=time.time() # Start time
-# for image_p in glob.glob('test_images/test*.jpg'):
-#     image = cv2.imread(image_p)
-#     window_img=frame_proc(image, lane=False, vis=False)
-#     show_img(window_img)
-#     plt.show()
-#     scipy.misc.imsave('output_advanced_'+image_p, window_img)    
-
-# print(round(time.time()-t, 2), 'Seconds to process test images')
 
 #Video Pipeline
-from moviepy.editor import VideoFileClip
-n_count = 0
-def process_image(image):
-    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-    return cv2.cvtColor(frame_proc(image, lane=False, video=True, vis=False), cv2.COLOR_BGR2RGB)
+# from moviepy.editor import VideoFileClip
+# n_count = 0
+# def process_image(image):
+#     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+#     return cv2.cvtColor(frame_proc(image, lane=False, video=True, vis=False), cv2.COLOR_BGR2RGB)
 
-output_v = 'project_video_proc.mp4'
-clip1 = VideoFileClip("project_video.mp4")
-clip = clip1.fl_image(process_image)
-clip.write_videofile(output_v, audio=False)
+# output_v = 'project_video_proc.mp4'
+# clip1 = VideoFileClip("project_video.mp4")
+# clip = clip1.fl_image(process_image)
+# clip.write_videofile(output_v, audio=False)
